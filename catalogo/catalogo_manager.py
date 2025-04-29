@@ -18,7 +18,7 @@ class CatalogoManager:
         return list(self.coleccion.find())
 
     def eliminar_item(self, criterio):
-        self.coleccion.delete_one(criterio)
+        return self.coleccion.delete_one(criterio)
 
     def cerrar_conexion(self):
         self.client.close()
