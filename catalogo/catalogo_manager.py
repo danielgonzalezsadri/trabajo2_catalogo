@@ -1,8 +1,3 @@
-def main():
-    print("Bienvenido al gestor de catálogo")
-
-if __name__ == "__main__":
-    main()
 from pymongo import MongoClient
 
 class CatalogoManager:
@@ -19,6 +14,12 @@ class CatalogoManager:
 
     def eliminar_item(self, criterio):
         return self.coleccion.delete_one(criterio)
+
+    def actualizar_item(self, filtro, nuevos_valores):
+        return self.coleccion.update_one(filtro, {'$set': nuevos_valores})
+
+    def buscar_item(self, filtro):
+        return list(self.coleccion.find(filtro))
 
     def cerrar_conexion(self):
         self.client.close()
